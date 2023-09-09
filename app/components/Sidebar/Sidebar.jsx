@@ -34,9 +34,9 @@ const Sidebar = () => {
           </div>
 
           <div className='flex items-center gap-3'>
-              <AiFillTwitterCircle color='white' size={30} className='bg-gray-800 p-1 rounded-full'/>
-              <AiOutlineInstagram color='white' size={30} className='bg-gray-800 p-1 rounded-full'/>
-              <BiLogoFacebook color='white' size={30} className='bg-gray-800 p-1 rounded-full'/>
+          <AiFillTwitterCircle color='white' size={30} className='bg-gray-800 p-1 rounded-full'/>
+              <Link href="https://www.instagram.com/ganaasgram/" target='_blank'><AiOutlineInstagram  color='white' size={30} className='bg-gray-800 p-1 rounded-full'/></Link>
+              <Link href="https://www.facebook.com/profile.php?id=100018811390896" target='_blank'><BiLogoFacebook color='white' size={30} className='bg-gray-800 p-1 rounded-full'/></Link>
               <BiLogoGmail color='white' size={30} className='bg-gray-800 p-1 rounded-full'/>
           </div>
 

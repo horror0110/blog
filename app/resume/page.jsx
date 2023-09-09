@@ -12,7 +12,7 @@ const lato = Lato({ subsets: ["latin"], weight: "400" });
 const Resume = () => {
   return (
     <div className={lato.className}>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mx-5">
 
       <div className="md:w-[800px] md:h-[750px] text-gray-800 mb-5  border-[5px] border-black  md:mt-10 mt-20  flex flex-col">
         <div className="bg-gray-600 text-white p-4 text-center">
@@ -20,7 +20,7 @@ const Resume = () => {
           <h2 className="text-xl">JUNIOR WEB DEVELOPER AND STUDENT</h2>
         </div>
         
-        <div className="flex md:gap-16 gap-4 p-4">
+        <div className="flex flex-col   md:flex-row md:gap-16 gap-4 p-4">
         <div className="md:w-[30%]  flex flex-col" >
           <div className="flex flex-col text-end items-end">
             <h1 className="font-bold text-2xl mb-2">CONTACT</h1>
@@ -56,7 +56,7 @@ const Resume = () => {
           </div>
         </div>
 
-        <div className="flex flex-col    gap-12">
+        <div className="flex flex-col gap-12">
             <div>
                 <h1 className="font-bold mb-2 text-2xl">WORK EXPERIENCE</h1>
                  <p>Currently a 4th year university student. I have made many websites myself. Usually done on the mern stack. I also worked as a frontend developer for several companies.</p>
