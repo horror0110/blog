@@ -45,7 +45,7 @@ const Write = () => {
 
           if(session.status === "authenticated"){
             return (
-              <div className="flex flex-col justify-center p-10">
+              <div className="flex flex-col justify-center p-10 md:mt-0 mt-10">
                 <h1 className="my-5 text-xl font-bold">Write new Blog</h1>
                 <input
                   className="border-[1px] border-gray-400 px-4 py-3 rounded-md"
@@ -74,7 +74,7 @@ const Write = () => {
                 />
           
                 <button
-                  className="bg-green-500 mt-5 rounded-md hover:bg-green-200"
+                  className="glow-on-hover"
                   onClick={createBlog}
                 >
                   SAVE

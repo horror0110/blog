@@ -95,7 +95,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center p-10">
+    <div className="flex flex-col justify-center md:mt-0 mt-10 p-10">
       {message}
       {session.status === "authenticated" && (
         <div className="flex justify-center items-center gap-5 mb-10">
@@ -119,7 +119,7 @@ const Blog = () => {
       )}
 
       <div className="flex flex-col items-center ">
-        <div className="w-[800px] grid grid-cols-2 gap-10">
+        <div className="md:w-[800px] w-[400px] grid md:grid-cols-2 grid-cols-1 gap-10">
           {blog.map((el, index) => (
             <div className="shadow p-5" key={el._id}>
               {isDelete && (
@@ -163,7 +163,7 @@ const Blog = () => {
         {currentPage > 1 && (
           <button
             onClick={() => handlePageChange(currentPage - 1)}
-            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 mr-2"
+            className="glow-on-hover"
           >
             Previous
           </button>
@@ -171,7 +171,7 @@ const Blog = () => {
         {currentPage < totalPages && (
           <button
             onClick={() => handlePageChange(currentPage + 1)}
-            className="bg-gray-200 hover:bg-gray-300 px-4 py-2"
+            className="glow-on-hover"
           >
             Next
           </button>
