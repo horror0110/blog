@@ -133,7 +133,7 @@ const Blog = () => {
 
               <div className="relative w-full h-[300px] overflow-hidden mb-5">
                 <Image
-                  src={`/${el.image}`}
+                  src={`${el.image}`}
                   alt="Blog Image"
                   layout="fill"
                   objectFit="cover"

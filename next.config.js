@@ -4,7 +4,10 @@ const nextConfig = {
       esmExternals: "loose", // <-- add this
       serverComponentsExternalPackages: ["mongoose"] // <-- and this
     },
-    // and the following to enable top-level await support for Webpack
+    images: {
+      domains: ['res.cloudinary.com'],
+    },
+    
    
   }
 

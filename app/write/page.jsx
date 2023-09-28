@@ -14,14 +14,46 @@ const Write = () => {
 
   const router = useRouter();
 
-  const createBlog = () => {
+  const CLOUD_NAME= "dz5ldrnic";
+  const UPLOAD_PRESET = "my_blog_project_ganaa";
+
+
+  const uploadImage = async () => {
+    if (!file) return;
+  
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", UPLOAD_PRESET);
+  
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+  
+      const data = await response.json();
+      const imageUrl = data['secure_url'];
+
+      return imageUrl
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  const createBlog = async () => { 
+    const imageUrl = await uploadImage();
+  
     if (title.trim() && text.trim() && detail.trim() !== "") {
       const data = {
         title: title,
         text: text,
         detail: detail,
-        image: file,
+        image: imageUrl, // Correctly include the imageUrl in the data object
       };
+  
       fetch("api/blog", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -39,6 +71,7 @@ const Write = () => {
         .catch((err) => console.log(err));
     }
   };
+  
      if(session.status === "unauthenticated"){
       router?.push("/");
      }
@@ -67,7 +100,7 @@ const Write = () => {
                 />
                 <input
                   className=""
-                  onChange={(e) => setFile(e.target.files[0].name)}
+                  onChange={(e) => setFile(e.target.files[0])}
                   type="file"
                   id="image"
                   placeholder="upload image"
