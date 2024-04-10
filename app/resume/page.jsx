@@ -12,7 +12,7 @@ const Resume = () => {
   return (
     <div className={lato.className}>
       <div className="flex flex-col items-center mx-5">
-        <div className="md:w-[800px] md:h-[750px] text-gray-800 mb-5  border-[5px] border-black  md:mt-10 mt-20  flex flex-col">
+        <div className="md:w-[800px] md:h-[850px] text-gray-800 mb-5  border-[5px] border-black  md:mt-10 mt-20  flex flex-col">
           <div className="bg-gray-600 text-white p-4 text-center">
             <h1 className="text-4xl mb-4">GAN-ERDENE GANBAT</h1>
             <h2 className="text-xl">JUNIOR WEB DEVELOPER AND STUDENT</h2>
@@ -60,6 +60,8 @@ const Resume = () => {
                 <div className="font-bold">• MongoDB</div>
                 <div className="font-bold">• Mongoose</div>
                 <div className="font-bold">• Prisma</div>
+                <div className="font-bold">• Role Based Managment (Clerk , NextAuth)</div>
+                <div className="font-bold">• Stripe Payment</div>
               </div>
             </div>
 
@@ -76,12 +78,16 @@ const Resume = () => {
               <div>
                 <h1 className="font-bold mb-2 text-2xl">PROJECTS</h1>
                 <div className="text-lg font-bold mb-4">
-                  Full Stack NextJS and NextJS API with MongoDB
+                  Full Stack NextJS projects
                 </div>
                 <ul>
-                  <li>• Personal and Company portfolio website projects</li>
-                  <li>• Food order website projects with admin panel</li>
-                  <li>• Ecommerce projects with admin panel</li>
+                  <li>• Personal and Company portfolio web app</li>
+                  <li>• Food order website projects web app</li>
+                  <li>• Ecommerce projects web app</li>
+                  <li>• Learning managment system web app</li>
+                  <li>• Learning video course web app </li>
+                  <li>• Meeting Zoom Clone </li>
+                  <li>• Realtime chatting clone web app </li>
                 </ul>
               </div>
             </div>
