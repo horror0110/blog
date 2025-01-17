@@ -85,7 +85,6 @@ const Resume = () => {
                   <li>• Ecommerce projects web app</li>
                   <li>• Learning managment system web app</li>
                   <li>• Learning video course web app </li>
-                  <li>• Meeting Zoom Clone </li>
                   <li>• Realtime chatting clone web app </li>
                 </ul>
               </div>
