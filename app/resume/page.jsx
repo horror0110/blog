@@ -15,7 +15,7 @@ const Resume = () => {
         <div className="md:w-[800px] md:h-[850px] text-gray-800 mb-5  border-[5px] border-black  md:mt-10 mt-20  flex flex-col">
           <div className="bg-gray-600 text-white p-4 text-center">
             <h1 className="text-4xl mb-4">GAN-ERDENE GANBAT</h1>
-            <h2 className="text-xl">JUNIOR WEB DEVELOPER AND STUDENT</h2>
+            <h2 className="text-xl">JUNIOR WEB DEVELOPER</h2>
           </div>
 
           <div className="flex flex-col   md:flex-row md:gap-16 gap-4 p-4">
@@ -44,7 +44,7 @@ const Resume = () => {
                 <h1 className="font-bold text-2xl mb-2">EDUCATION</h1>
                 <div>Mongeni Complex School</div>
                 <div>
-                  University of the Humanities <strong>Graduate course</strong>
+                  University of the Humanities <strong>Graduated</strong>
                 </div>
               </div>
 
@@ -62,6 +62,7 @@ const Resume = () => {
                 <div className="font-bold">• Prisma</div>
                 <div className="font-bold">• Role Based Managment (Clerk , NextAuth)</div>
                 <div className="font-bold">• Stripe Payment</div>
+                <div className="font-bold">• Graphql (learning)</div>
               </div>
             </div>
 
@@ -69,9 +70,7 @@ const Resume = () => {
               <div>
                 <h1 className="font-bold mb-2 text-2xl">WORK EXPERIENCE</h1>
                 <p>
-                  Currently a 4th year university student. I have made many
-                  websites myself. Usually done on the mern stack. I also worked
-                  as a frontend developer for several companies.
+                When I was a student, I did internships in many companies.
                 </p>
               </div>
 
