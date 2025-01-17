@@ -42,7 +42,7 @@ const Resume = () => {
 
               <div className="flex flex-col text-end items-end my-6">
                 <h1 className="font-bold text-2xl mb-2">EDUCATION</h1>
-                <div>Mongeni Complex School</div>
+                <div>Mongeni Complex School <strong>Graduated</strong></div>
                 <div>
                   University of the Humanities <strong>Graduated</strong>
                 </div>
