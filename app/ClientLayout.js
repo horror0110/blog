@@ -12,7 +12,7 @@ export default function ClientLayout({ children }) {
         {/* Container with full responsive behavior */}
         <div className="flex flex-col md:flex-row min-h-screen w-full">
           {/* Header/Navbar - Responsive across all devices */}
-          <header className="w-full md:w-60 lg:w-64 xl:w-72 md:min-h-screen md:sticky md:top-0 md:left-0 z-50">
+          <header className="w-full md:w-60 lg:w-64 xl:w-76 md:min-h-screen md:sticky md:top-0 md:left-0 z-50">
             <Navbar />
           </header>
 
