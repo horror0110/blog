@@ -10,7 +10,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: "300" });
 
 export const metadata = {
   title: "Personal Portfolio",
-  description: "Personal blog 2023",
+  description: "Personal Portfolio 2025",
 };
 
 export default function RootLayout({ children }) {
