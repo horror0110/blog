@@ -52,7 +52,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700/50 p-6 fixed top-0 left-0 md:w-[280px] w-full h-[80px] md:h-full z-[100] backdrop-blur-xl">
+    <div className="bg-gradient-to-b p-5 from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700/50 fixed top-0 left-0 md:w-[280px] w-full h-[80px] md:h-full z-[100] backdrop-blur-xl">
       {/* Mobile Header */}
       <div className="md:hidden flex items-center justify-between">
         <div className="flex items-center space-x-3">
@@ -164,9 +164,6 @@ const Navbar = () => {
           <div className="text-center">
             <p className="text-slate-500 text-xs font-medium">
               © {currentYear} Gan-Erdene Ganbat
-            </p>
-            <p className="text-slate-600 text-xs mt-1">
-              Built with ❤️ & Next.js
             </p>
           </div>
         </div>

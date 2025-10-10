@@ -192,15 +192,6 @@ const Sidebar = () => {
                 <span>Download CV</span>
                 <RxResume size={16} />
               </button>
-              <button
-                onClick={() => {
-                  toggleSidebar(), router.push("/resume");
-                }}
-                className="w-full flex items-center justify-center space-x-2 py-3 px-4 border border-slate-600 rounded-xl text-slate-300 font-medium hover:bg-slate-800/50 hover:text-white transition-all duration-200"
-              >
-                <span>Contact Me</span>
-                <AiFillContacts size={16} />
-              </button>
             </div>
           </div>
 
@@ -209,9 +200,6 @@ const Sidebar = () => {
             <div className="text-center">
               <p className="text-slate-500 text-xs font-medium">
                 © {currentYear} Gan-Erdene Ganbat
-              </p>
-              <p className="text-slate-600 text-xs mt-1">
-                Built with ❤️ & Next.js
               </p>
             </div>
           </div>
