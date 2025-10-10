@@ -6,7 +6,7 @@ import ClientLayout from "./ClientLayout";
 const poppins = Poppins({ subsets: ["latin"], weight: "300" });
 
 export const metadata = {
-  title: "Personal Portfolio",
+  title: "Gan-Erdene Ganbat",
   description: "Personal Portfolio 2025",
 };
 
