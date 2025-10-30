@@ -446,7 +446,7 @@ const Resume = () => {
                       title: "Learning Management System",
                       description:
                         "Full-featured educational platform with course management, student tracking, and real-time collaboration.",
-                      tech: "Next.js, Node.js, MongoDB, Socket.io",
+                      tech: "Next.js, Django, PostgreSQL, Socket.io",
                       stats: "10,000+ active users • 3 universities",
                       impact: "Reduced administrative workload by 60%",
                       color: "from-blue-500 to-indigo-500",
@@ -456,7 +456,7 @@ const Resume = () => {
                       title: "Enterprise ERP System",
                       description:
                         "Comprehensive business management platform with 9 integrated modules including HR, Finance, and Asset Management.",
-                      tech: "React, Django, PostgreSQL, GraphQL",
+                      tech: "Next.js, Django, PostgreSQL, Redis",
                       stats: "500+ daily users • 9 modules",
                       impact: "Streamlined operations across departments",
                       color: "from-green-500 to-emerald-500",
@@ -466,7 +466,7 @@ const Resume = () => {
                       title: "District Information Portal",
                       description:
                         "Public-facing government services website with real-time news updates and community resources.",
-                      tech: "Next.js, TypeScript, TailwindCSS",
+                      tech: "Next.js, TypeScript, Django , TailwindCSS",
                       stats: "5,000+ monthly visitors",
                       impact: "Improved citizen engagement by 45%",
                       color: "from-purple-500 to-pink-500",
@@ -476,7 +476,7 @@ const Resume = () => {
                       title: "HR Mobile App (Flutter)",
                       description:
                         "Cross-platform mobile application for HR management including employee profiles and attendance tracking.",
-                      tech: "Flutter, Dart, Firebase, REST API",
+                      tech: "Flutter, Dart, REST API",
                       stats: "1,000+ app downloads",
                       impact: "Reduced HR processing time by 50%",
                       color: "from-orange-500 to-red-500",
