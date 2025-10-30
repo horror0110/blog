@@ -93,9 +93,41 @@ const Sidebar = () => {
           <div className="flex flex-col items-center mb-8">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-              <div className="relative w-24 h-24 rounded-full border-4 border-slate-600 overflow-hidden bg-slate-700">
+
+              {/* Orbiting Tech Icons */}
+              <div className="absolute inset-0 animate-spin-slow">
+                {[
+                  { icon: "/html.png", angle: 0 },
+                  { icon: "/css.jpg", angle: 60 },
+                  { icon: "/js.png", angle: 120 },
+                  { icon: "/ts.png", angle: 180 },
+                  { icon: "/dart.png", angle: 240 },
+                  { icon: "/python.png", angle: 300 },
+                ].map((tech, idx) => (
+                  <div
+                    key={idx}
+                    className="absolute w-8 h-8 bg-slate-800/90 rounded-lg flex items-center justify-center text-xs font-bold border border-slate-600 shadow-lg overflow-hidden"
+                    style={{
+                      top: "50%",
+                      left: "50%",
+                      transform: `translate(-50%, -50%) rotate(${tech.angle}deg) translateY(-70px) rotate(-${tech.angle}deg)`,
+                    }}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={tech.icon}
+                        fill
+                        alt="tech icon"
+                        className="object-contain p-1"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="relative w-24 h-24 rounded-full border-4 border-slate-600 overflow-hidden bg-slate-700 z-10">
                 <Image
-                  src="/profile.jpg"
+                  src="/user.jpg"
                   alt="Profile Image"
                   layout="fill"
                   objectFit="cover"
@@ -104,7 +136,7 @@ const Sidebar = () => {
               </div>
             </div>
 
-            <div className="mt-4 text-center">
+            <div className="mt-10 text-center">
               <h1 className="text-white font-bold text-lg mb-1">
                 Gan-Erdene Ganbat
               </h1>
@@ -205,6 +237,22 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
+
+      {/* Animations */}
+      <style jsx global>{`
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+      `}</style>
     </>
   );
 };
