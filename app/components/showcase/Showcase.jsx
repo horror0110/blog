@@ -159,12 +159,12 @@ const Showcase = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900">
-      {/* Three.js Canvas */}
-      <div ref={mountRef} className="absolute inset-0" />
+    <div className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900">
+      {/* Three.js Canvas - Fixed Background */}
+      <div ref={mountRef} className="fixed inset-0 z-0" />
 
-      {/* Content Overlay */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
+      {/* Content Overlay - Scrollable */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-6 py-20">
         <div
           className={`max-w-5xl mx-auto text-center space-y-8 transition-all duration-1000 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -180,7 +180,7 @@ const Showcase = () => {
 
           {/* Main Heading */}
           <div className="space-y-6">
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black">
               <span className="block bg-gradient-to-r from-white via-purple-200 to-cyan-300 bg-clip-text text-transparent animate-gradient">
                 Gan-Erdene
               </span>
@@ -190,9 +190,9 @@ const Showcase = () => {
             </h1>
 
             {/* Animated Title */}
-            <div className="relative h-16 flex items-center justify-center">
+            <div className="relative h-12 sm:h-16 flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/20 to-transparent blur-xl"></div>
-              <h2 className="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+              <h2 className="relative text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white">
                 <span className="inline-block animate-typing">
                   Full Stack Developer
                 </span>
@@ -202,13 +202,13 @@ const Showcase = () => {
           </div>
 
           {/* Description */}
-          <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed font-light px-4">
             Transforming ideas into immersive digital experiences with modern
             web technologies
           </p>
 
           {/* Tech Stack Pills */}
-          <div className="flex flex-wrap justify-center gap-3 pt-4">
+          <div className="flex flex-wrap justify-center gap-3 pt-4 px-4">
             {[
               "React",
               "Next.js",
@@ -228,12 +228,12 @@ const Showcase = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 px-4">
             <button
               onClick={() => (window.location.href = "/resume")}
-              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 w-full sm:w-auto"
             >
-              <span className="relative z-10 flex items-center space-x-2">
+              <span className="relative z-10 flex items-center justify-center space-x-2">
                 <span>View Portfolio</span>
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
@@ -254,9 +254,9 @@ const Showcase = () => {
 
             <button
               onClick={() => (window.location.href = "/blog")}
-              className="group px-8 py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-full text-white font-semibold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 hover:scale-105"
+              className="group px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-full text-white font-semibold text-base sm:text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
-              <span className="flex items-center space-x-2">
+              <span className="flex items-center justify-center space-x-2">
                 <span>Read Blog</span>
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
@@ -278,10 +278,10 @@ const Showcase = () => {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-3 h-3 bg-purple-400/60 rounded-full animate-float-slow"></div>
-      <div className="absolute bottom-32 right-32 w-4 h-4 bg-cyan-400/60 rounded-full animate-float-slower"></div>
-      <div className="absolute top-1/2 right-20 w-2 h-2 bg-pink-400/60 rounded-full animate-float"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-white/40 rounded-full animate-float-slow"></div>
+      <div className="fixed top-20 left-20 w-3 h-3 bg-purple-400/60 rounded-full animate-float-slow pointer-events-none hidden sm:block"></div>
+      <div className="fixed bottom-32 right-32 w-4 h-4 bg-cyan-400/60 rounded-full animate-float-slower pointer-events-none hidden sm:block"></div>
+      <div className="fixed top-1/2 right-20 w-2 h-2 bg-pink-400/60 rounded-full animate-float pointer-events-none hidden sm:block"></div>
+      <div className="fixed bottom-1/4 left-1/4 w-3 h-3 bg-white/40 rounded-full animate-float-slow pointer-events-none hidden sm:block"></div>
 
       <style jsx>{`
         @keyframes float {
