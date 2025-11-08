@@ -159,7 +159,7 @@ const Showcase = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900">
+    <div className="relative w-full h-screen bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900">
       {/* Three.js Canvas */}
       <div ref={mountRef} className="absolute inset-0" />
 
