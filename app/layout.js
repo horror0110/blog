@@ -2,6 +2,7 @@
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import ClientLayout from "./ClientLayout";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "300" });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <ClientLayout>{children}</ClientLayout>
+        <Toaster/>
       </body>
     </html>
   );

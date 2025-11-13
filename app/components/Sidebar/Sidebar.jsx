@@ -15,6 +15,7 @@ import { RxResume } from "react-icons/rx";
 import { usePathname, useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/GlobalContext";
 import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const currentUrl = usePathname();
@@ -53,13 +54,14 @@ const Sidebar = () => {
     });
   }
 
-    useEffect(() => {
+  useEffect(() => {
     loadPdfLibrary();
   }, []);
 
   const handleDownloadCV = async () => {
     toggleSidebar(); // Sidebar-г хаах
     await downloadResumeAsPdf();
+    toast.success("CV амжилттай татагдлаа");
   };
 
   return (

@@ -15,6 +15,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GlobalContext } from "@/context/GlobalContext";
 import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const currentUrl = usePathname();
@@ -62,12 +63,14 @@ const Navbar = () => {
     // Хэрэв resume хуудсанд байгаа бол шууд татах
     if (currentUrl === "/resume") {
       await downloadResumeAsPdf();
+      toast.success("CV амжилттай татагдлаа");
     } else {
       // Үгүй бол resume руу шилжүүлэх
       router.push("/resume");
       // Хуудас ачаалагдах хүртэл хүлээх
       setTimeout(async () => {
         await downloadResumeAsPdf();
+        toast.success("CV амжилттай татагдлаа");
       }, 1500);
     }
   };
