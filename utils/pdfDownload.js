@@ -62,7 +62,7 @@ export const downloadResumeAsPdf = async (
     const element = document.getElementById(elementId);
 
     if (!element) {
-      alert("Resume олдсонгүй. Resume хуудас руу шилжинэ үү.");
+      alert("Resume олдсонгүй Resume хуудас руу шилжинэ үү.");
       return;
     }
 
