@@ -1,43 +1,58 @@
 "use client";
-import React from "react";
-import { Lato } from "next/font/google";
-import Link from "next/link";
-import { AiOutlineMail, AiFillPhone, AiFillGithub } from "react-icons/ai";
-import {
-  FaLocationArrow,
-  FaCalendar,
-  FaDownload,
-  FaTrophy,
-  FaDumbbell,
-  FaUsers,
-  FaChartLine,
-  FaCode,
-} from "react-icons/fa";
-
-const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
+import React, { useEffect } from "react";
+import { Mail, Phone, MapPin, Calendar, Download, Trophy, Dumbbell, Users, TrendingUp, Code, Github } from "lucide-react";
 
 const Resume = () => {
-  const handleDownloadPDF = () => {
-    window.print();
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  const handleDownloadPDF = async () => {
+    const element = document.getElementById('resume-content');
+    const opt = {
+      margin: [0.5, 0.5, 0.5, 0.5],
+      filename: 'CV_Gan-Erdene_Ganbat.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    try {
+      if (window.html2pdf) {
+        await window.html2pdf().set(opt).from(element).save();
+      } else {
+        alert('PDF library loading... Please try again in a moment.');
+      }
+    } catch (error) {
+      console.error('PDF generation failed:', error);
+      window.print();
+    }
   };
 
   return (
-    <div className={lato.className}>
+    <div className="font-sans">
       <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 min-h-screen py-8">
-        {/* Download Button */}
-        <div className="w-full max-w-6xl mb-6 print:hidden mt-16 md:mt-0 ">
+        <div className="w-full max-w-6xl mb-6">
           <button
             onClick={handleDownloadPDF}
             className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3.5 rounded-xl font-semibold flex items-center gap-3 transition-all shadow-lg hover:shadow-xl ml-auto transform hover:scale-105"
           >
-            <FaDownload className="text-base" />
-            Print
+            <Download className="w-4 h-4" />
+            Download PDF
           </button>
         </div>
 
-        <div className="w-full max-w-6xl bg-white shadow-2xl rounded-2xl overflow-hidden print:shadow-none print:rounded-none">
-          {/* Modern Header Section */}
-          <div className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white p-8 sm:p-12 print:bg-slate-900">
+        <div id="resume-content" className="w-full max-w-6xl bg-white shadow-2xl rounded-2xl overflow-hidden">
+          <div className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white p-8 sm:p-12">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500 rounded-full filter blur-3xl opacity-20"></div>
 
@@ -51,127 +66,87 @@ const Resume = () => {
                 <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full"></div>
               </div>
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-light tracking-wide text-blue-200">
-                Full-Stack Developer
+                Middle Full-Stack Developer
               </h2>
               <p className="text-blue-300 mt-3 text-base max-w-2xl mx-auto">
-                Passionate developer with 2+ years building scalable web
-                applications
+                Experienced developer with 2+ years building enterprise-grade, scalable applications
               </p>
             </div>
           </div>
 
           <div className="flex flex-col lg:flex-row">
-            {/* Left Sidebar */}
-            <div className="lg:w-2/5 bg-gradient-to-b from-gray-50 to-blue-50 p-6 sm:p-8 print:bg-gray-50">
-              {/* Contact Section */}
+            <div className="lg:w-2/5 bg-gradient-to-b from-gray-50 to-blue-50 p-6 sm:p-8">
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                    CONTACT
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">CONTACT</h3>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-gray-700 hover:text-blue-600 transition-colors">
+                  <div className="flex items-center gap-3 text-gray-700">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <AiOutlineMail className="text-blue-600 text-lg" />
+                      <Mail className="text-blue-600 w-5 h-5" />
                     </div>
-                    <span className="text-sm break-all">
-                      ganaa.12396@yahoo.com
-                    </span>
+                    <span className="text-sm break-all">ganaa.12396@yahoo.com</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-700">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <AiFillPhone className="text-blue-600 text-lg" />
+                      <Phone className="text-blue-600 w-5 h-5" />
                     </div>
                     <span className="text-sm">90162332</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-700">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <FaLocationArrow className="text-blue-600 text-lg" />
+                      <MapPin className="text-blue-600 w-5 h-5" />
                     </div>
                     <span className="text-sm">Ulaanbaatar, Mongolia</span>
                   </div>
-                  <Link
-                    className="flex items-center gap-3 text-blue-600 hover:text-indigo-600 transition-colors group print:text-blue-600"
-                    target="_blank"
-                    href="https://github.com/horror0110"
-                  >
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-100 transition-colors">
-                      <AiFillGithub className="text-lg" />
+                  <a className="flex items-center gap-3 text-blue-600" target="_blank" href="https://github.com/horror0110">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Github className="w-5 h-5" />
                     </div>
-                    <span className="text-sm font-medium underline">
-                      github.com/horror0110
-                    </span>
-                  </Link>
+                    <span className="text-sm font-medium underline">github.com/horror0110</span>
+                  </a>
                 </div>
               </div>
 
-              {/* Summary Section - NEW */}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                    PROFESSIONAL SUMMARY
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">PROFESSIONAL SUMMARY</h3>
                 </div>
                 <div className="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-500">
                   <p className="text-sm text-gray-700 leading-relaxed">
-                    Full-stack developer specializing in modern web technologies
-                    with proven track record of building scalable applications
-                    serving 10,000+ users. Experienced in leading development
-                    teams and delivering complex enterprise solutions.
+                    Middle full-stack developer with 2+ years of hands-on experience in building scalable, enterprise-grade web applications. Proven expertise in modern JavaScript frameworks, cloud infrastructure, and DevOps practices. Successfully delivered 10+ production applications serving 10,000+ users with focus on performance optimization, clean architecture, and agile development methodologies.
                   </p>
                 </div>
               </div>
 
-              {/* Education Section */}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                    EDUCATION
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">EDUCATION</h3>
                 </div>
                 <div className="space-y-4">
-                  <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-500 print:shadow-none print:border print:border-gray-200">
-                    <h4 className="font-bold text-gray-800 text-base">
-                      University of the Humanities
-                    </h4>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Bachelor's Degree - Graduated
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">
-                      Relevant Coursework: Data Structures, Web Development,
-                      Database Management
-                    </p>
+                  <div className="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-500">
+                    <h4 className="font-bold text-gray-800 text-base">University of the Humanities</h4>
+                    <p className="text-sm text-gray-600 mt-1">Bachelor's Degree - Graduated</p>
+                    <p className="text-xs text-gray-500 mt-1">Relevant Coursework: Data Structures, Web Development, Database Management</p>
                   </div>
-                  <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-indigo-500 print:shadow-none print:border print:border-gray-200">
-                    <h4 className="font-bold text-gray-800 text-base">
-                      Mongeni Complex School
-                    </h4>
-                    <p className="text-sm text-gray-600 mt-1">
-                      High School - Graduated
-                    </p>
+                  <div className="bg-white p-5 rounded-xl shadow-md border-l-4 border-indigo-500">
+                    <h4 className="font-bold text-gray-800 text-base">Mongeni Complex School</h4>
+                    <p className="text-sm text-gray-600 mt-1">High School - Graduated</p>
                   </div>
                 </div>
               </div>
 
-              {/* Skills Section */}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                    TECHNICAL SKILLS
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">TECHNICAL SKILLS</h3>
                 </div>
                 <div className="space-y-4">
-                  {/* Languages */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                      Languages
-                    </h4>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Languages</h4>
                     <div className="grid grid-cols-2 gap-2">
                       {[
                         { name: "JavaScript", level: "Advanced" },
@@ -179,124 +154,87 @@ const Resume = () => {
                         { name: "Python", level: "Intermediate" },
                         { name: "Dart", level: "Intermediate" },
                       ].map((skill, index) => (
-                        <div
-                          key={index}
-                          className="flex flex-col gap-1 bg-white p-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
-                        >
-                          <span className="text-sm text-gray-700 font-medium">
-                            {skill.name}
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            {skill.level}
-                          </span>
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium block">{skill.name}</span>
+                          <span className="text-xs text-gray-500">{skill.level}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Frontend */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                      Frontend
-                    </h4>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Frontend</h4>
                     <div className="grid grid-cols-2 gap-2">
-                      {["React.js", "Next.js", "TailwindCSS", "HTML5/CSS3"].map(
-                        (skill, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-2 bg-white p-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
-                          >
-                            <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
-                            <span className="text-sm text-gray-700 font-medium">
-                              {skill}
-                            </span>
-                          </div>
-                        )
-                      )}
+                      {["React.js", "Next.js", "TailwindCSS", "HTML5/CSS3"].map((skill, index) => (
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium">{skill}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Backend */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                      Backend
-                    </h4>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Backend</h4>
                     <div className="grid grid-cols-2 gap-2">
-                      {["Node.js", "Express.js", "Django", "GraphQL"].map(
-                        (skill, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-2 bg-white p-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
-                          >
-                            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
-                            <span className="text-sm text-gray-700 font-medium">
-                              {skill}
-                            </span>
-                          </div>
-                        )
-                      )}
+                      {["Node.js", "Express.js", "Django", "GraphQL"].map((skill, index) => (
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium">{skill}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Database */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                      Database & Tools
-                    </h4>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Database & Tools</h4>
                     <div className="grid grid-cols-2 gap-2">
-                      {["MongoDB", "PostgreSQL", "Prisma", "Git"].map(
-                        (skill, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-2 bg-white p-2.5 rounded-lg hover:bg-blue-50 transition-colors group"
-                          >
-                            <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-red-400 rounded-full"></div>
-                            <span className="text-sm text-gray-700 font-medium">
-                              {skill}
-                            </span>
-                          </div>
-                        )
-                      )}
+                      {["MongoDB", "PostgreSQL", "Prisma", "Git"].map((skill, index) => (
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium">{skill}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">DevOps & Cloud</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        { name: "Docker", level: "Beginner" },
+                        { name: "AWS", level: "Beginner" },
+                        { name: "GCP", level: "Beginner" },
+                        { name: "CI/CD", level: "Beginner" },
+                      ].map((skill, index) => (
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium block">{skill.name}</span>
+                          <span className="text-xs text-gray-500">{skill.level}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Achievements Section */}
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                    INTERESTS
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">INTERESTS</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-5 rounded-xl shadow-md border-l-4 border-yellow-500">
                     <div className="flex items-start gap-3">
-                      <FaTrophy className="text-yellow-600 text-lg mt-1 flex-shrink-0" />
+                      <Trophy className="text-yellow-600 w-5 h-5 mt-1" />
                       <div>
-                        <h4 className="font-bold text-gray-800 text-sm mb-1">
-                          Chess Master
-                        </h4>
-                        <p className="text-xs text-gray-700">
-                          Strategic thinking & problem-solving
-                        </p>
+                        <h4 className="font-bold text-gray-800 text-sm mb-1">Chess Master</h4>
+                        <p className="text-xs text-gray-700">Strategic thinking & problem-solving</p>
                       </div>
                     </div>
                   </div>
                   <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-xl shadow-md border-l-4 border-green-500">
                     <div className="flex items-start gap-3">
-                      <FaDumbbell className="text-green-600 text-lg mt-1 flex-shrink-0" />
+                      <Dumbbell className="text-green-600 w-5 h-5 mt-1" />
                       <div>
-                        <h4 className="font-bold text-gray-800 text-sm mb-1">
-                          Fitness Enthusiast
-                        </h4>
-                        <p className="text-xs text-gray-700">
-                          5+ years of dedicated training
-                        </p>
+                        <h4 className="font-bold text-gray-800 text-sm mb-1">Fitness Enthusiast</h4>
+                        <p className="text-xs text-gray-700">5+ years of dedicated training</p>
                       </div>
                     </div>
                   </div>
@@ -304,226 +242,113 @@ const Resume = () => {
               </div>
             </div>
 
-            {/* Right Content */}
             <div className="lg:w-3/5 p-6 sm:p-8 lg:p-10">
-              {/* Work Experience Section - ENHANCED */}
               <div className="mb-10">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1 h-10 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">
-                    WORK EXPERIENCE
-                  </h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">WORK EXPERIENCE</h3>
                 </div>
 
                 <div className="mb-6">
                   <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6 sm:p-8 rounded-2xl shadow-lg border border-blue-100">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                       <div>
-                        <h4 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">
-                          Frontend Developer
-                        </h4>
-                        <h5 className="text-lg text-blue-600 font-bold">
-                          Nandin Brothers Group LLC
-                        </h5>
+                        <h4 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">Frontend Developer</h4>
+                        <h5 className="text-lg text-blue-600 font-bold">Nandin Brothers Group LLC</h5>
                       </div>
                       <div className="flex items-center gap-2 text-gray-600 mt-3 sm:mt-0 bg-white px-4 py-2 rounded-lg shadow-sm">
-                        <FaCalendar className="text-sm text-blue-500" />
-                        <span className="text-sm font-semibold">
-                          Feb 2025 - Present
-                        </span>
+                        <Calendar className="w-4 h-4 text-blue-500" />
+                        <span className="text-sm font-semibold">Feb 2025 - Nov 2025</span>
                       </div>
                     </div>
 
-                    {/* Key Achievements */}
                     <div className="space-y-3 mb-4">
                       <div className="flex items-start gap-3">
-                        <FaChartLine className="text-blue-600 mt-1 flex-shrink-0" />
+                        <TrendingUp className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
                         <p className="text-sm text-gray-700">
-                          <strong>Improved performance:</strong> Optimized React
-                          applications resulting in 40% faster load times and
-                          25% reduction in bundle size
+                          <strong>Improved performance:</strong> Optimized React applications resulting in 40% faster load times and 25% reduction in bundle size
                         </p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <FaUsers className="text-blue-600 mt-1 flex-shrink-0" />
+                        <Users className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
                         <p className="text-sm text-gray-700">
-                          <strong>Team collaboration:</strong> Working with
-                          5-member development team using Agile methodology and
-                          Git workflow
+                          <strong>Team collaboration:</strong> Working with 5-member development team using Agile methodology and Git workflow
                         </p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <FaCode className="text-blue-600 mt-1 flex-shrink-0" />
+                        <Code className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
                         <p className="text-sm text-gray-700">
-                          <strong>Tech stack:</strong> Next.js 14, TypeScript,
-                          Flutter, TailwindCSS, REST APIs
+                          <strong>Tech stack:</strong> Next.js 14, TypeScript, Flutter, TailwindCSS, Docker, AWS/GCP, GitHub Actions
                         </p>
                       </div>
                     </div>
 
-                    {/* Responsibilities */}
                     <div className="bg-white/50 p-4 rounded-lg">
-                      <h6 className="font-semibold text-gray-800 mb-2 text-sm">
-                        Key Responsibilities:
-                      </h6>
+                      <h6 className="font-semibold text-gray-800 mb-2 text-sm">Key Responsibilities:</h6>
                       <ul className="space-y-1 text-sm text-gray-700">
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600 mt-1">•</span>
-                          <span>
-                            Develop and maintain responsive web applications
-                            using React.js and Next.js
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600 mt-1">•</span>
-                          <span>
-                            Implement pixel-perfect UI designs with focus on UX
-                            best practices
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600 mt-1">•</span>
-                          <span>
-                            Collaborate with backend team to integrate RESTful
-                            APIs
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600 mt-1">•</span>
-                          <span>
-                            Write clean, maintainable code following industry
-                            best practices
-                          </span>
-                        </li>
+                        <li>• Develop and maintain responsive web applications using React.js and Next.js</li>
+                        <li>• Implement pixel-perfect UI designs with focus on UX best practices</li>
+                        <li>• Collaborate with backend team to integrate RESTful APIs and microservices</li>
+                        <li>• Deploy and manage applications on AWS/GCP cloud platforms</li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
-                {/* Previous Experience */}
                 <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl border border-gray-200">
-                  <h4 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    Internships & Previous Experience
-                  </h4>
+                  <h4 className="text-lg font-bold text-gray-800 mb-3">Internships & Previous Experience</h4>
                   <div className="space-y-2 text-sm text-gray-700">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">•</span>
-                      <span>
-                        Completed 3+ internships at technology companies
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">•</span>
-                      <span>
-                        Gained experience in full-stack development and Agile
-                        methodologies
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">•</span>
-                      <span>
-                        Built 10+ projects including ERP systems and mobile
-                        applications
-                      </span>
-                    </div>
+                    <p>• Completed 3+ internships at technology companies</p>
+                    <p>• Built 10+ projects including ERP systems and mobile applications</p>
+                    <p>• Experience with containerization, cloud deployment, and automated testing</p>
                   </div>
                 </div>
               </div>
 
-              {/* Projects Section - ENHANCED */}
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1 h-10 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">
-                    FEATURED PROJECTS
-                  </h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">FEATURED PROJECTS</h3>
                 </div>
 
                 <div className="grid gap-5">
                   {[
                     {
                       title: "Learning Management System",
-                      description:
-                        "Full-featured educational platform with course management, student tracking, and real-time collaboration.",
-                      tech: "Next.js, Django, PostgreSQL, Socket.io",
-                      stats: "10,000+ active users • 3 universities",
-                      impact: "Reduced administrative workload by 60%",
-                      color: "from-blue-500 to-indigo-500",
-                      github: "Link available upon request",
+                      description: "Full-featured educational platform with course management, student tracking, and real-time collaboration.",
+                      tech: "Next.js, Django, PostgreSQL, Socket.io, Docker",
+                      stats: "10,000+ active users",
+                      impact: "Reduced admin workload by 60%",
                     },
                     {
                       title: "Enterprise ERP System",
-                      description:
-                        "Comprehensive business management platform with 9 integrated modules including HR, Finance, and Asset Management.",
-                      tech: "Next.js, Django, PostgreSQL, Redis",
-                      stats: "500+ daily users • 9 modules",
-                      impact: "Streamlined operations across departments",
-                      color: "from-green-500 to-emerald-500",
-                      github: "Private repository",
+                      description: "Comprehensive business management platform with 9 integrated modules including HR, Finance, and Asset Management.",
+                      tech: "Next.js, Django, PostgreSQL, Redis, Docker, AWS",
+                      stats: "500+ daily users",
+                      impact: "Streamlined operations",
                     },
                     {
                       title: "District Information Portal",
-                      description:
-                        "Public-facing government services website with real-time news updates and community resources.",
-                      tech: "Next.js, TypeScript, Django , TailwindCSS",
+                      description: "Public-facing government services website with real-time news updates. Deployed on GCP with CI/CD pipeline.",
+                      tech: "Next.js, TypeScript, Django, TailwindCSS, GCP",
                       stats: "5,000+ monthly visitors",
-                      impact: "Improved citizen engagement by 45%",
-                      color: "from-purple-500 to-pink-500",
-                      github: "Live at [district-url]",
+                      impact: "45% engagement increase",
                     },
                     {
                       title: "HR Mobile App (Flutter)",
-                      description:
-                        "Cross-platform mobile application for HR management including employee profiles and attendance tracking.",
-                      tech: "Flutter, Dart, REST API",
-                      stats: "1,000+ app downloads",
-                      impact: "Reduced HR processing time by 50%",
-                      color: "from-orange-500 to-red-500",
-                      github: "Available on request",
+                      description: "Cross-platform mobile application for HR management with employee profiles and attendance tracking.",
+                      tech: "Flutter, Dart, REST API, Docker",
+                      stats: "1,000+ downloads",
+                      impact: "50% faster HR processing",
                     },
                   ].map((project, index) => (
-                    <div
-                      key={index}
-                      className="group bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all border border-gray-100 hover:border-blue-200"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div
-                          className={`w-3 h-3 bg-gradient-to-r ${project.color} rounded-full mt-1.5 flex-shrink-0 group-hover:scale-125 transition-transform`}
-                        ></div>
-                        <div className="flex-1">
-                          <h5 className="font-bold text-gray-800 mb-2 text-base sm:text-lg group-hover:text-blue-600 transition-colors">
-                            {project.title}
-                          </h5>
-                          <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                            {project.description}
-                          </p>
-
-                          {/* Tech Stack */}
-                          <div className="mb-3">
-                            <p className="text-xs font-semibold text-gray-500 mb-1">
-                              Tech Stack:
-                            </p>
-                            <p className="text-xs text-gray-600">
-                              {project.tech}
-                            </p>
-                          </div>
-
-                          {/* Stats & Impact */}
-                          <div className="flex flex-wrap gap-2 mb-2">
-                            <span className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium">
-                              {project.stats}
-                            </span>
-                            <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">
-                              {project.impact}
-                            </span>
-                          </div>
-
-                          {/* GitHub Link */}
-                          <p className="text-xs text-gray-500 italic mt-2">
-                            {project.github}
-                          </p>
-                        </div>
+                    <div key={index} className="bg-white p-5 rounded-xl shadow-md border border-gray-100">
+                      <h5 className="font-bold text-gray-800 mb-2 text-lg">{project.title}</h5>
+                      <p className="text-sm text-gray-600 mb-3">{project.description}</p>
+                      <p className="text-xs text-gray-500 mb-2"><strong>Tech:</strong> {project.tech}</p>
+                      <div className="flex gap-2">
+                        <span className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">{project.stats}</span>
+                        <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">{project.impact}</span>
                       </div>
                     </div>
                   ))}
@@ -533,47 +358,6 @@ const Resume = () => {
           </div>
         </div>
       </div>
-
-      {/* Print Styles */}
-      <style jsx global>{`
-        @media print {
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-            color-adjust: exact !important;
-          }
-
-          body {
-            margin: 0;
-            padding: 0;
-          }
-
-          .print\\:hidden {
-            display: none !important;
-          }
-
-          .print\\:shadow-none {
-            box-shadow: none !important;
-          }
-
-          .print\\:rounded-none {
-            border-radius: 0 !important;
-          }
-
-          .print\\:bg-slate-900 {
-            background-color: #0f172a !important;
-          }
-
-          .print\\:bg-gray-50 {
-            background-color: #f9fafb !important;
-          }
-
-          @page {
-            margin: 0.4in 0.5in;
-            size: A4;
-          }
-        }
-      `}</style>
     </div>
   );
 };

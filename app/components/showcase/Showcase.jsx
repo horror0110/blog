@@ -234,7 +234,7 @@ const Showcase = () => {
               className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center space-x-2">
-                <span>View Portfolio</span>
+                <span>View My Resume</span>
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
                   fill="none"
