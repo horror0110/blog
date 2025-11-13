@@ -41,7 +41,7 @@ const Resume = () => {
   return (
     <div className="font-sans">
       <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 min-h-screen py-8">
-        <div className="w-full max-w-6xl mb-6">
+        <div className="w-full max-w-6xl mb-6 mt-20 md:mt-0">
           <button
             onClick={handleDownloadPDF}
             className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3.5 rounded-xl font-semibold flex items-center gap-3 transition-all shadow-lg hover:shadow-xl ml-auto transform hover:scale-105"
