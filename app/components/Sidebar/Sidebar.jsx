@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   AiFillTwitterCircle,
   AiOutlineInstagram,
@@ -14,6 +14,7 @@ import { BiLogoFacebook, BiLogoGmail, BiLogoBlogger } from "react-icons/bi";
 import { RxResume } from "react-icons/rx";
 import { usePathname, useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/GlobalContext";
+import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
 
 const Sidebar = () => {
   const currentUrl = usePathname();
@@ -51,6 +52,15 @@ const Sidebar = () => {
       label: "Write Blog",
     });
   }
+
+    useEffect(() => {
+    loadPdfLibrary();
+  }, []);
+
+  const handleDownloadCV = async () => {
+    toggleSidebar(); // Sidebar-г хаах
+    await downloadResumeAsPdf();
+  };
 
   return (
     <>
@@ -216,9 +226,7 @@ const Sidebar = () => {
             </div>
             <div className="space-y-2">
               <button
-                onClick={() => {
-                  toggleSidebar(), router.push("/resume");
-                }}
+                onClick={handleDownloadCV}
                 className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl text-white font-medium hover:scale-105 transition-transform duration-200"
               >
                 <span>Download CV</span>

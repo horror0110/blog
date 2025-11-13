@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   AiFillTwitterCircle,
   AiOutlineInstagram,
@@ -11,9 +11,10 @@ import {
 } from "react-icons/ai";
 import { BiLogoFacebook, BiLogoGmail, BiLogoBlogger } from "react-icons/bi";
 import { RxResume } from "react-icons/rx";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GlobalContext } from "@/context/GlobalContext";
+import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
 
 const Navbar = () => {
   const currentUrl = usePathname();
@@ -21,6 +22,12 @@ const Navbar = () => {
   const currentYear = d.getFullYear();
   const session = useSession();
   const { toggleSidebar } = useContext(GlobalContext);
+  const router = useRouter();
+
+  // PDF library-г урьдчилан ачаалах
+  useEffect(() => {
+    loadPdfLibrary();
+  }, []);
 
   const socialLinks = [
     { icon: AiFillTwitterCircle, href: "#", label: "Twitter" },
@@ -50,6 +57,20 @@ const Navbar = () => {
       label: "Write Blog",
     });
   }
+
+  const handleDownloadCV = async () => {
+    // Хэрэв resume хуудсанд байгаа бол шууд татах
+    if (currentUrl === "/resume") {
+      await downloadResumeAsPdf();
+    } else {
+      // Үгүй бол resume руу шилжүүлэх
+      router.push("/resume");
+      // Хуудас ачаалагдах хүртэл хүлээх
+      setTimeout(async () => {
+        await downloadResumeAsPdf();
+      }, 1500);
+    }
+  };
 
   return (
     <div className="bg-gradient-to-b p-5 from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700/50 fixed top-0 left-0 md:w-[280px] w-full h-[80px] md:h-full z-[100] backdrop-blur-xl">
@@ -158,6 +179,9 @@ const Navbar = () => {
 
         {/* Navigation Menu */}
         <nav className="flex-1 space-y-2">
+          <div className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-4 px-2">
+            Navigation
+          </div>
           {navigationItems.map((item, index) => {
             const IconComponent = item.icon;
             const isActive = currentUrl === item.href;
@@ -191,8 +215,22 @@ const Navbar = () => {
           })}
         </nav>
 
+        {/* Quick Actions - Download CV Button */}
+        <div className="mb-6">
+          <div className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-3 px-2">
+            Quick Actions
+          </div>
+          <button
+            onClick={handleDownloadCV}
+            className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl text-white font-medium hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            <span>Download CV</span>
+            <RxResume size={18} />
+          </button>
+        </div>
+
         {/* Footer */}
-        <div className="mt-auto pt-6 border-t border-slate-700/50">
+        <div className="pt-4 border-t border-slate-700/50">
           <div className="text-center">
             <p className="text-slate-500 text-xs font-medium">
               © {currentYear} Gan-Erdene Ganbat

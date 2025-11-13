@@ -1,41 +1,15 @@
 "use client";
 import React, { useEffect } from "react";
 import { Mail, Phone, MapPin, Calendar, Download, Trophy, Dumbbell, Users, TrendingUp, Code, Github } from "lucide-react";
+import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
 
 const Resume = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
+   useEffect(() => {
+    loadPdfLibrary();
   }, []);
 
-  const handleDownloadPDF = async () => {
-    const element = document.getElementById('resume-content');
-    const opt = {
-      margin: [0.5, 0.5, 0.5, 0.5],
-      filename: 'CV_Gan-Erdene_Ganbat.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-
-    try {
-      if (window.html2pdf) {
-        await window.html2pdf().set(opt).from(element).save();
-      } else {
-        alert('PDF library loading... Please try again in a moment.');
-      }
-    } catch (error) {
-      console.error('PDF generation failed:', error);
-      window.print();
-    }
+  const handleDownloadPDF = () => {
+    downloadResumeAsPdf();
   };
 
   return (
