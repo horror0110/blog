@@ -332,7 +332,7 @@ const Resume = () => {
                       description: "Public-facing government services website with real-time news updates. Deployed on GCP with CI/CD pipeline.",
                       tech: "Next.js, TypeScript, Django, TailwindCSS, GCP",
                       stats: "5,000+ monthly visitors",
-                      impact: "45% engagement increase",
+                      impact: "50% engagement increase",
                     },
                     {
                       title: "HR Mobile App (Flutter)",
