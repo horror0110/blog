@@ -1,10 +1,12 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 const Showcase = () => {
   const mountRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -203,19 +205,22 @@ const Showcase = () => {
 
           {/* Description */}
           <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed font-light px-4">
-            Transforming ideas into immersive digital experiences with modern
-            web technologies
+            Building scalable, enterprise-grade applications with modern web &
+            mobile technologies. 4 years of coding experience with passion for
+            clean architecture and performance optimization.
           </p>
 
           {/* Tech Stack Pills */}
           <div className="flex flex-wrap justify-center gap-3 pt-4 px-4">
             {[
-              "React",
               "Next.js",
-              "Express.js",
+              "React",
               "TypeScript",
+              "Node.js",
               "Django",
               "Flutter",
+              "PostgreSQL",
+              "Docker",
             ].map((tech, index) => (
               <span
                 key={tech}
@@ -227,16 +232,37 @@ const Showcase = () => {
             ))}
           </div>
 
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 px-4 max-w-3xl mx-auto">
+            {[
+              { value: "4+", label: "Years Coding" },
+              { value: "1.5+", label: "Years Pro" },
+              { value: "10K+", label: "Users Served" },
+              { value: "10+", label: "Projects" },
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  {stat.value}
+                </div>
+                <div className="text-xs sm:text-sm text-white/60 mt-1">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 px-4">
             <button
-              onClick={() => (window.location.href = "/resume")}
+              onClick={() => router.push("/resume")}
               className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center space-x-2">
-                <span>View My Resume</span>
                 <svg
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -245,21 +271,27 @@ const Showcase = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
+                <span>View Resume</span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
 
-            <button
-              onClick={() => (window.location.href = "/blog")}
+            {/* <button
+              onClick={() =>
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: "smooth",
+                })
+              }
               className="group px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-full text-white font-semibold text-base sm:text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
               <span className="flex items-center justify-center space-x-2">
-                <span>Read Blog</span>
+                <span>Contact Me</span>
                 <svg
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                  className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -268,11 +300,74 @@ const Showcase = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M9 5l7 7-7 7"
+                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
               </span>
-            </button>
+            </button> */}
+          </div>
+
+          {/* Contact Info at Bottom */}
+          <div className="pt-12 space-y-3">
+            <div className="flex flex-wrap justify-center gap-6 text-white/60 text-sm">
+              <a
+                href="mailto:ganaa.12396@yahoo.com"
+                className="hover:text-white transition-colors flex items-center gap-2"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                ganaa.12396@yahoo.com
+              </a>
+              <span className="flex items-center gap-2">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+                90162332
+              </span>
+              <span className="flex items-center gap-2">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                Ulaanbaatar, Mongolia
+              </span>
+            </div>
           </div>
         </div>
       </div>

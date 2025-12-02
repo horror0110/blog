@@ -1,27 +1,24 @@
 "use client";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useContext, useEffect } from "react";
-import {
-  AiFillTwitterCircle,
-  AiOutlineInstagram,
-  AiOutlineHome,
-  AiFillContacts,
-} from "react-icons/ai";
-import { BiLogoFacebook, BiLogoGmail, BiLogoBlogger } from "react-icons/bi";
-import { RxResume } from "react-icons/rx";
-import { usePathname, useRouter } from "next/navigation";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { GlobalContext } from "@/context/GlobalContext";
 import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
+import {
+  AiFillTwitterCircle,
+  AiOutlineHome,
+  AiOutlineInstagram,
+} from "react-icons/ai";
+import { BiLogoFacebook, BiLogoGmail } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { RxResume } from "react-icons/rx";
 
 const Navbar = () => {
   const currentUrl = usePathname();
   const d = new Date();
   const currentYear = d.getFullYear();
-  const session = useSession();
   const { toggleSidebar } = useContext(GlobalContext);
   const router = useRouter();
 
@@ -48,16 +45,7 @@ const Navbar = () => {
   const navigationItems = [
     { icon: AiOutlineHome, href: "/", label: "Home" },
     { icon: RxResume, href: "/resume", label: "Resume" },
-    { icon: BiLogoBlogger, href: "/blog", label: "Blog" },
   ];
-
-  if (session.status === "authenticated") {
-    navigationItems.push({
-      icon: AiFillContacts,
-      href: "/write",
-      label: "Write Blog",
-    });
-  }
 
   const handleDownloadCV = async () => {
     // Хэрэв resume хуудсанд байгаа бол шууд татах

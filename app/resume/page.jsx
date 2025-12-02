@@ -12,6 +12,8 @@ import {
   TrendingUp,
   Code,
   Github,
+  Layers,
+  Zap,
 } from "lucide-react";
 import { downloadResumeAsPdf, loadPdfLibrary } from "@/utils/pdfDownload";
 import toast from "react-hot-toast";
@@ -57,11 +59,12 @@ const Resume = () => {
                 <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full"></div>
               </div>
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-light tracking-wide text-blue-200">
-                Middle Full-Stack Developer
+                Full-Stack Developer
               </h2>
               <p className="text-blue-300 mt-3 text-base max-w-2xl mx-auto">
-                Experienced developer with 2+ years building enterprise-grade,
-                scalable applications
+                Passionate developer with 4 years of coding experience and 1.5
+                years of professional work, specializing in full-stack
+                development
               </p>
             </div>
           </div>
@@ -96,6 +99,12 @@ const Resume = () => {
                     </div>
                     <span className="text-sm">Ulaanbaatar, Mongolia</span>
                   </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Calendar className="text-blue-600 w-5 h-5" />
+                    </div>
+                    <span className="text-sm">Age: 23</span>
+                  </div>
                   <a
                     className="flex items-center gap-3 text-blue-600"
                     target="_blank"
@@ -120,13 +129,15 @@ const Resume = () => {
                 </div>
                 <div className="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-500">
                   <p className="text-sm text-gray-700 leading-relaxed">
-                    Middle full-stack developer with 2+ years of hands-on
-                    experience in building scalable, enterprise-grade web
-                    applications. Proven expertise in modern JavaScript
-                    frameworks, cloud infrastructure, and DevOps practices.
-                    Successfully delivered 10+ production applications serving
-                    10,000+ users with focus on performance optimization, clean
-                    architecture, and agile development methodologies.
+                    Full-stack developer with 4 years of coding experience and
+                    1.5 years of professional work building scalable,
+                    production-ready applications. Strong expertise in backend
+                    architecture (Node.js/Express, Django), frontend development
+                    (Next.js, React), and mobile development (Flutter, React
+                    Native). Successfully delivered enterprise systems serving
+                    10,000+ users including university management platforms and
+                    government portals with focus on performance optimization,
+                    clean architecture, and modern DevOps practices.
                   </p>
                 </div>
               </div>
@@ -144,11 +155,15 @@ const Resume = () => {
                       University of the Humanities
                     </h4>
                     <p className="text-sm text-gray-600 mt-1">
-                      Bachelor's Degree - Graduated
+                      Bachelor's Degree - Software Engineering
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                      <Calendar className="w-3 h-3" />
+                      Graduated: June 2024
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
                       Relevant Coursework: Data Structures, Web Development,
-                      Database Management
+                      Database Management, Software Architecture
                     </p>
                   </div>
                   <div className="bg-white p-5 rounded-xl shadow-md border-l-4 border-indigo-500">
@@ -195,30 +210,56 @@ const Resume = () => {
 
                   <div>
                     <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">
-                      Frontend
+                      Backend & Architecture
                     </h4>
                     <div className="grid grid-cols-2 gap-2">
-                      {["React.js", "Next.js", "TailwindCSS", "HTML5/CSS3"].map(
-                        (skill, index) => (
-                          <div
-                            key={index}
-                            className="bg-white p-2.5 rounded-lg"
-                          >
-                            <span className="text-sm text-gray-700 font-medium">
-                              {skill}
-                            </span>
-                          </div>
-                        )
-                      )}
+                      {[
+                        "Node.js",
+                        "Express.js",
+                        "Django",
+                        "TypeScript",
+                        "PostgreSQL",
+                        "Prisma ORM",
+                        "JWT Auth",
+                        "REST API",
+                      ].map((skill, index) => (
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium">
+                            {skill}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
                   <div>
                     <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">
-                      Backend
+                      Frontend & UI/UX
                     </h4>
                     <div className="grid grid-cols-2 gap-2">
-                      {["Node.js", "Express.js", "Django", "GraphQL"].map(
+                      {[
+                        "Next.js",
+                        "React.js",
+                        "TypeScript",
+                        "TailwindCSS",
+                        "Shadcn UI",
+                        "HTML5/CSS3",
+                      ].map((skill, index) => (
+                        <div key={index} className="bg-white p-2.5 rounded-lg">
+                          <span className="text-sm text-gray-700 font-medium">
+                            {skill}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">
+                      Mobile Development
+                    </h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {["Flutter", "Dart", "React Native", "Mobile UI/UX"].map(
                         (skill, index) => (
                           <div
                             key={index}
@@ -255,25 +296,37 @@ const Resume = () => {
 
                   <div>
                     <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">
-                      DevOps & Cloud
+                      DevOps & Deployment
                     </h4>
                     <div className="grid grid-cols-2 gap-2">
                       {[
-                        { name: "Docker", level: "Beginner" },
-                        { name: "AWS", level: "Beginner" },
-                        { name: "GCP", level: "Beginner" },
-                        { name: "CI/CD", level: "Beginner" },
+                        "Docker",
+                        "CI/CD",
+                        "AWS",
+                        "GCP",
+                        "Performance",
+                        "Monitoring",
                       ].map((skill, index) => (
                         <div key={index} className="bg-white p-2.5 rounded-lg">
-                          <span className="text-sm text-gray-700 font-medium block">
-                            {skill.name}
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            {skill.level}
+                          <span className="text-sm text-gray-700 font-medium">
+                            {skill}
                           </span>
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-100">
+                    <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                      <Layers className="w-4 h-4 text-blue-600" />
+                      Backend Expertise
+                    </h4>
+                    <ul className="text-xs text-gray-600 space-y-1">
+                      <li>• Security & Validation</li>
+                      <li>• Caching & Optimization</li>
+                      <li>• Logging & Monitoring</li>
+                      <li>• Testing & CI/CD</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -325,7 +378,7 @@ const Resume = () => {
                   </h3>
                 </div>
 
-                <div className="mb-6">
+                <div className="space-y-6">
                   <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6 sm:p-8 rounded-2xl shadow-lg border border-blue-100">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                       <div>
@@ -348,24 +401,33 @@ const Resume = () => {
                       <div className="flex items-start gap-3">
                         <TrendingUp className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
                         <p className="text-sm text-gray-700">
-                          <strong>Improved performance:</strong> Optimized React
-                          applications resulting in 40% faster load times and
-                          25% reduction in bundle size
+                          <strong>ERP System Development:</strong> Led frontend
+                          development of comprehensive 9-module enterprise
+                          resource planning system for business management
                         </p>
                       </div>
                       <div className="flex items-start gap-3">
                         <Users className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
                         <p className="text-sm text-gray-700">
-                          <strong>Team collaboration:</strong> Working with
-                          5-member development team using Agile methodology and
-                          Git workflow
+                          <strong>Team collaboration:</strong> Worked with
+                          cross-functional teams using Agile methodology, Git
+                          workflow, and modern CI/CD practices
                         </p>
                       </div>
                       <div className="flex items-start gap-3">
                         <Code className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
                         <p className="text-sm text-gray-700">
                           <strong>Tech stack:</strong> Next.js 14, TypeScript,
-                          Flutter, TailwindCSS, Docker, AWS/GCP, GitHub Actions
+                          Shadcn UI, TailwindCSS, Flutter, Docker, AWS/GCP,
+                          GitHub Actions
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Zap className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
+                        <p className="text-sm text-gray-700">
+                          <strong>Performance:</strong> Optimized application
+                          performance, implemented responsive designs with
+                          strong UI/UX sensibility
                         </p>
                       </div>
                     </div>
@@ -376,40 +438,95 @@ const Resume = () => {
                       </h6>
                       <ul className="space-y-1 text-sm text-gray-700">
                         <li>
-                          • Develop and maintain responsive web applications
-                          using React.js and Next.js
+                          • Developed responsive web applications using Next.js,
+                          React, and TypeScript
                         </li>
                         <li>
-                          • Implement pixel-perfect UI designs with focus on UX
-                          best practices
+                          • Implemented modern UI components with Shadcn UI
+                          library and TailwindCSS
                         </li>
                         <li>
-                          • Collaborate with backend team to integrate RESTful
-                          APIs and microservices
+                          • Built mobile applications using Flutter with focus
+                          on performance
                         </li>
                         <li>
-                          • Deploy and manage applications on AWS/GCP cloud
-                          platforms
+                          • Collaborated with backend team on API integration
+                          and data management
                         </li>
                       </ul>
                     </div>
                   </div>
-                </div>
 
-                <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl border border-gray-200">
-                  <h4 className="text-lg font-bold text-gray-800 mb-3">
-                    Internships & Previous Experience
-                  </h4>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    <p>• Completed 3+ internships at technology companies</p>
-                    <p>
-                      • Built 10+ projects including ERP systems and mobile
-                      applications
-                    </p>
-                    <p>
-                      • Experience with containerization, cloud deployment, and
-                      automated testing
-                    </p>
+                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl shadow-lg border border-purple-100">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-800 mb-1">
+                          Freelance Full-Stack Developer
+                        </h4>
+                        <h5 className="text-base text-purple-600 font-semibold">
+                          Independent Projects
+                        </h5>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600 mt-3 sm:mt-0 bg-white px-4 py-2 rounded-lg shadow-sm">
+                        <Calendar className="w-4 h-4 text-purple-500" />
+                        <span className="text-sm font-semibold">
+                          Jun 2024 - Jan 2025
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="bg-white/70 p-4 rounded-lg">
+                        <h6 className="font-semibold text-gray-800 mb-2 text-sm">
+                          Major Projects Delivered:
+                        </h6>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li>
+                            <strong>
+                              • University Student Management System:
+                            </strong>{" "}
+                            Deployed at Higher School of Culture, Law and
+                            Education & National Defense University (10,000+
+                            users)
+                          </li>
+                          <li>
+                            <strong>• District Information Portal:</strong>{" "}
+                            Developed government web portal for Bayanzurkh
+                            District (launching soon, 5,000+ monthly visitors
+                            expected)
+                          </li>
+                          <li>
+                            • Full-stack development using Next.js, Django,
+                            PostgreSQL
+                          </li>
+                          <li>
+                            • Cloud deployment and DevOps setup with Docker
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-5 rounded-xl border border-gray-200">
+                    <h4 className="text-base font-bold text-gray-800 mb-3">
+                      Additional Experience
+                    </h4>
+                    <div className="space-y-2 text-sm text-gray-700">
+                      <p>
+                        • 4 years of coding experience with continuous learning
+                      </p>
+                      <p>
+                        • Completed multiple internships at technology companies
+                      </p>
+                      <p>
+                        • Built 10+ production projects including ERP systems
+                        and mobile apps
+                      </p>
+                      <p>
+                        • Experience with containerization, CI/CD pipelines, and
+                        cloud platforms
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -425,56 +542,62 @@ const Resume = () => {
                 <div className="grid gap-5">
                   {[
                     {
-                      title: "Learning Management System",
+                      title: "University Student Management System",
                       description:
-                        "Full-featured educational platform with course management, student tracking, and real-time collaboration.",
-                      tech: "Next.js, Django, PostgreSQL, Socket.io, Docker",
+                        "Comprehensive educational platform deployed at 2 major universities with student tracking, course management, and administrative tools.",
+                      tech: "Next.js, TypeScript, Django, PostgreSQL, Docker, Shadcn UI",
                       stats: "10,000+ active users",
-                      impact: "Reduced admin workload by 60%",
+                      impact: "Live in production",
+                      color: "blue",
                     },
                     {
-                      title: "Enterprise ERP System",
+                      title: "Enterprise ERP System (9 Modules)",
                       description:
-                        "Comprehensive business management platform with 9 integrated modules including HR, Finance, and Asset Management.",
-                      tech: "Next.js, Django, PostgreSQL, Redis, Docker, AWS",
+                        "Complete business management platform including HR, Finance, Inventory, Asset Management, and 5 additional integrated modules.",
+                      tech: "Next.js 14, TypeScript, Django, PostgreSQL, Docker, AWS",
                       stats: "500+ daily users",
                       impact: "Streamlined operations",
+                      color: "indigo",
                     },
                     {
-                      title: "District Information Portal",
+                      title: "Bayanzurkh District Information Portal",
                       description:
-                        "Public-facing government services website with real-time news updates. Deployed on GCP with CI/CD pipeline.",
-                      tech: "Next.js, TypeScript, Django, TailwindCSS, GCP",
-                      stats: "5,000+ monthly visitors",
-                      impact: "50% engagement increase",
+                        "Government services website with real-time news, public information, and citizen engagement features. Launching soon.",
+                      tech: "Next.js, TypeScript, Django, TailwindCSS, Docker, GCP",
+                      stats: "5,000+ expected visitors",
+                      impact: "Enhanced public access",
+                      color: "purple",
                     },
                     {
-                      title: "HR Mobile App (Flutter)",
+                      title: "HR Mobile Application",
                       description:
-                        "Cross-platform mobile application for HR management with employee profiles and attendance tracking.",
+                        "Cross-platform mobile app for HR management with employee profiles, attendance tracking, and leave management.",
                       tech: "Flutter, Dart, REST API, Docker",
                       stats: "1,000+ downloads",
-                      impact: "50% faster HR processing",
+                      impact: "50% faster processing",
+                      color: "green",
                     },
                   ].map((project, index) => (
                     <div
                       key={index}
-                      className="bg-white p-5 rounded-xl shadow-md border border-gray-100"
+                      className={`bg-gradient-to-br from-${project.color}-50 to-${project.color}-100 p-5 rounded-xl shadow-md border border-${project.color}-200`}
                     >
                       <h5 className="font-bold text-gray-800 mb-2 text-lg">
                         {project.title}
                       </h5>
-                      <p className="text-sm text-gray-600 mb-3">
+                      <p className="text-sm text-gray-700 mb-3">
                         {project.description}
                       </p>
-                      <p className="text-xs text-gray-500 mb-2">
-                        <strong>Tech:</strong> {project.tech}
+                      <p className="text-xs text-gray-600 mb-3">
+                        <strong>Tech Stack:</strong> {project.tech}
                       </p>
-                      <div className="flex gap-2">
-                        <span className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">
+                      <div className="flex gap-2 flex-wrap">
+                        <span
+                          className={`text-xs bg-${project.color}-100 text-${project.color}-700 px-3 py-1 rounded-full font-medium`}
+                        >
                           {project.stats}
                         </span>
-                        <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">
+                        <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium">
                           {project.impact}
                         </span>
                       </div>
