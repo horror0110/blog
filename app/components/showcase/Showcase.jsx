@@ -206,7 +206,7 @@ const Showcase = () => {
           {/* Description */}
           <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed font-light px-4">
             Building scalable, enterprise-grade applications with modern web &
-            mobile technologies. 4 years of coding experience with passion for
+            mobile technologies. 6 years of coding experience with passion for
             clean architecture and performance optimization.
           </p>
 
