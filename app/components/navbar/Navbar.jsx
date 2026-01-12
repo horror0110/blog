@@ -6,11 +6,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
-import {
-  AiFillTwitterCircle,
-  AiOutlineHome,
-  AiOutlineInstagram,
-} from "react-icons/ai";
+import { AiFillTwitterCircle, AiOutlineInstagram } from "react-icons/ai";
 import { BiLogoFacebook, BiLogoGmail } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxResume } from "react-icons/rx";
@@ -39,11 +35,10 @@ const Navbar = () => {
       href: "https://www.facebook.com/profile.php?id=100018811390896",
       label: "Facebook",
     },
-    { icon: BiLogoGmail, href: "mailto:your.email@gmail.com", label: "Email" },
+    { icon: BiLogoGmail, href: "mailto:ganaa.12396@yahoo.com", label: "Email" },
   ];
 
   const navigationItems = [
-    { icon: AiOutlineHome, href: "/", label: "Home" },
     { icon: RxResume, href: "/resume", label: "Resume" },
   ];
 

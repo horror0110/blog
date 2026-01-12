@@ -9,6 +9,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: "300" });
 export const metadata = {
   title: "Gan-Erdene Ganbat",
   description: "Personal Portfolio 2025",
+  
 };
 
 export default function RootLayout({ children }) {

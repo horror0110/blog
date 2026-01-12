@@ -7,6 +7,15 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/resume",
+        permanent: true, // эсвэл false
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

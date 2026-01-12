@@ -38,7 +38,6 @@ const Sidebar = () => {
   ];
 
   const navigationItems = [
-    { icon: AiOutlineHome, href: "/", label: "Home" },
     { icon: RxResume, href: "/resume", label: "Resume" },
   ];
 
